@@ -32,6 +32,5 @@ describe('Teste a função fetchProduct', () => {
         new Error('ID não informado')
       );
     });
-
   });
 

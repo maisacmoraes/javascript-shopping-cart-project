@@ -39,9 +39,4 @@ describe('Teste a função fetchProductsList', () => {
       new Error('Termo de busca não informado')
     );
   });
-
-
-
-  // it('...', () => {
-  // });
 });

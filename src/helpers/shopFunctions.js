@@ -4,6 +4,11 @@ import { fetchProduct } from './fetchFunctions';
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
+let totalPrice = 0;
+const handleTotalPrice = (price) => {
+  totalPrice += price;
+  document.querySelector('.total-price').innerText = totalPrice;
+};
 
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
@@ -45,9 +50,10 @@ export const getIdFromProduct = (product) => (
  * @param {Element} li - Elemento do produto a ser removido do carrinho.
  * @param {string} id - ID do produto a ser removido do carrinho.
  */
-const removeCartProduct = (li, id) => {
+const removeCartProduct = (li, id, price) => {
   li.remove();
   removeCartID(id);
+  handleTotalPrice(-price);
 };
 
 /**
@@ -87,7 +93,9 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
   );
   li.appendChild(removeButton);
 
-  li.addEventListener('click', () => removeCartProduct(li, id));
+  handleTotalPrice(price);
+
+  li.addEventListener('click', () => removeCartProduct(li, id, price));
   return li;
 };
 

@@ -1,6 +1,7 @@
 import { searchCep } from './helpers/cepFunctions';
-import { fetchProductsList } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+import { fetchProduct, fetchProductsList } from './helpers/fetchFunctions';
+import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
+import { getSavedCartIDs } from './helpers/cartFunctions';
 import './style.css';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
@@ -36,3 +37,11 @@ try {
 
 const removeLoading = document.querySelector('.loading');
 removeLoading.remove();
+
+const cart = async () => {
+  const promisses = await Promise.all(getSavedCartIDs().map((id) => fetchProduct(id)));
+  const cartProducts = document.querySelector('.cart__products');
+  promisses
+    .forEach((element) => cartProducts.appendChild(createCartProductElement(element)));
+};
+cart();

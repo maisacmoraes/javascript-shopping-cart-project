@@ -4,7 +4,14 @@ import { createProductElement, createCartProductElement } from './helpers/shopFu
 import { getSavedCartIDs } from './helpers/cartFunctions';
 import './style.css';
 
-document.querySelector('.cep-button').addEventListener('click', searchCep);
+document.querySelector('.cep-button').addEventListener('click', async () => {
+  const cepInput = document.querySelector('.cep-input').value;
+  console.log(cepInput);
+  const minlength = 8;
+  if (cepInput.length === minlength) {
+    await searchCep(cepInput);
+  }
+});
 
 const loading = async () => {
   const elementoPai = document.body;

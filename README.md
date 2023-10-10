@@ -1,6 +1,6 @@
 # Shopping Cart 🛒
 
-Este projeto escrito em JavaScript visa criar um carrinho de compras totalmente dinâmico.
+Este projeto desenvolve um carrinho de compras totalmente dinâmico utilizando JavaScript, para isso consome dados diretamente de uma API para busca de produtos à venda. Desenvolvimento orientado a testes.
 
 ## Funcionalidades
 
